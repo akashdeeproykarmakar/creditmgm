@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="button.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="bg">
+        
+        <nav class="nav-div">
+        
+            <div class="logo-container">
+                <a href="index.html" class="logo">Credit<br/>Management</a>
+            </div>
+        
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <div class="Menu-btn">
+                    <img src="assets/Menu.png" style="height: 20px;">
+                </div>
+            </a>
+               
+            <ul class="main-nav" id="mymain-nav">
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <div class="Cross-btn" id="myCross-btn">
+                   
+                    <img src="assets/Cross.png" style="height: 20px;">
+                </div>
+                </a>
+                <li>
+                    <a href="view" method = "GET" class="nav-links">View All Users</a>
+                </li>
+                <li>
+                    <a href="aboutus" method = "GET" class="nav-links">About Us</a>
+                </li>
+                <li>
+                    <a href="contactus" method = "GET" class="nav-links">Contact Us</a>
+                </li>
+            </ul>
+         </nav>
+        <section>
+            <div class="mid-text">
+            <h2 class="user">Transfer History</h2>
+            <br>
+            <% if(user!=null) { %>
+            <div class="table-container">
+              <table class="table" >
+                <thead>
+                  <tr>
+                      <th>#</th>
+                      <th>From User </th>
+                      <th>To User</th>
+                      <th>Credits</th>
+                  </tr>
+                </thead>
+            <% user.forEach(function(item, i){ %>
+              
+                <tbody>        
+                    <tr>
+                      
+                        <td><%= i+1 %></td>
+                        <td ><%= item.From %></a></td>
+                        <td><%= item.To%></td>
+                        <td><%= item.Credit %></td>
+                                     
+                    </tr>
+                    
+                </tbody>
+                  <% }) %>
+              </table>
+                  <% } %>
+            </div>
+            </div>
+          
+        </section>
+        <footer>
+            <div class="credits-text">
+                <label>Designed by Akashdeep Roy Karmakar</label>
+            </div>
+        </footer>
+    </div>
+    <script>
+        function myFunction() {
+          var x = document.getElementById("mymain-nav");
+          var y = document.getElementById("myCross-btn");
+          if (x.className === "main-nav") {
+            x.className += " show";
+            y.className +=" show"
+          } else {
+            x.className = "main-nav";
+          }
+        }
+        </script>
+</body>
+</html>

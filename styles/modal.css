@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+.bg-modal {
+	background-color: rgba(0, 0, 0, 0.8);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	display: none;
+	justify-content: center;
+    align-items: center;
+    
+}
+
+.modal-contents {
+    margin: 20px;
+	height: 320px;
+	width: 500px;
+	background-color: rgba(20, 20, 20, 1);
+	text-align: center;
+	padding: 30px;
+	position: relative;
+	border-radius: 10px;
+}
+
+
+
+.close {
+	position: absolute;
+	top: 0;
+	right: 20px;
+	font-size: 42px;
+	color: rgb(255, 255, 255);
+	
+	cursor: pointer;
+	
+}
+.close:hover {
+    color: rgba(219, 219, 219, 0.897);
+}
+.button-modal {
+    background-color: rgb(56, 43, 243);
+    
+    border-radius: 30px;
+    text-decoration: none;
+    padding: 10px 28px;
+    color: white;
+    margin-top: 20px;
+    font-family: 'Rubik';
+    font-size: 14px;
+    font-weight: 800;
+    display: inline-block;
+}
+.button-modal:hover {
+    background-color: white;
+    color: blue;
+    
+}
+/* Drop down box style*/
+/*box {
+    
+    transform: translate(-50%, -50%);
+  }*/
+  .label-text
+  {
+      color: rgb(252, 252, 252);
+      font-size: 17px;
+      font-family: 'Segoe UI';
+      margin: 10px;
+      text-transform: uppercase;
+      
+  }
+  .box {
+    margin: 1%;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    
+
+}
+
+  .box select {
+    background-color: #888888e3;
+    color: white;
+    padding: 12px;
+    width: 250px;
+    border: none;
+    font-size: 20px;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+    display: inline;
+  }
+  
+  .box::before {
+    
+    font-family: 'Rubik';
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 18%;
+    height: 100%;
+    text-align: center;
+    font-size: 28px;
+    line-height: 45px;
+    color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+  }
+  
+/*.box:hover{
+    color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.2);
+  }*/
+  
+.box select option {
+    padding: 30px;
+    
+    
+    
+  }
+  input {
+    
+    margin: auto;
+	display: block;
+	width: 230px;
+	padding: 8px;
+    border: 3px round gray;
+    
+}
+.input-box{
+    margin-top: 2%;
+}

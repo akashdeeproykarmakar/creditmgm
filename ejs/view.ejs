@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="button.css">
+    <link rel="stylesheet" href="modal.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="bg">
+        
+        <nav class="nav-div">
+        
+            <div class="logo-container">
+                <a href="index.html" class="logo">Credit<br/>Management</a>
+            </div>
+        
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <div class="Menu-btn">
+                    <img src="assets/Menu.png" style="height: 20px;">
+                </div>
+            </a>
+               
+            <ul class="main-nav" id="mymain-nav">
+               <!-- <li>
+                    <a href="#" class="nav-links">View All Users</a>
+                </li>-->
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <div class="Cross-btn" id="myCross-btn">
+                   
+                    <img src="assets/Cross.png" style="height: 20px;">
+                </div>
+                </a>
+                <li>
+                    <a href="transfers" method = "GET" class="nav-links">Transfer History</a>
+                </li>
+                <li>
+                    <a href="aboutus" method = "GET" class="nav-links">About Us</a>
+                </li>
+                <li>
+                    <a href="contactus" method = "GET" class="nav-links">Contact Us</a>
+                </li>
+            </ul>
+         </nav>
+        <section>
+            
+                
+                <div class="mid-text">
+                    <h2 class="user">Users</h2>
+                    <p style="margin: 0; padding-left: 12px; font-size: 12px; font-style: italic; ">*Press on a Name to transfer the credits</p>
+                   <% if(details!=null) { %>
+                    <div class="table-container">
+                        <table class="table" >
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name </th>
+                                <th>Phone</th>
+                                <th>E-Mail</th>
+                                <th>Current Credit </th>
+                                
+                            </tr>
+                        </thead>
+                   <% details.forEach(function(item, i){ %>
+                        
+                        <tbody>        
+                            <tr>
+                                
+                                <td><%= i+1 %></td>
+                                <td ><a class ="transfer" href="#" value= "<%= item.Name %>" ><%= item.Name %></a></td>
+                                <td><%= item.Phone%></td>
+                                <td><%= item.Email %></td>
+                                <td><%= item.Currentcredit%></td>
+                            </tr>
+                        </tbody>
+                            <% }) %>
+                        </table>
+                            <% } %>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="credits-text">
+                <label>Designed by Akashdeep Roy Karmakar</label>
+            </div>
+        </footer>
+        <div class="bg-modal">
+            <div class="modal-contents">
+                 <div class="close">
+                    <img src="assets/Cross.png" style="height: 20px;">
+                 </div>
+                <form action="/creditsend" method="POST">
+              <label class="label-text">From</label>
+              <div class="box">
+                <select name="From">
+                  <% details.forEach(function(item){ %>
+                  <option class="from-user" id="<%= item.Name%>" onselect="removeName(this.id)"><%= item.Name%></option>
+                  <% }) %>
+                </select>
+                </div>
+                 
+                  <label class = "label-text">To</label>
+                    <div class="box">
+                         <select name="To">
+                            <% details.forEach(function(item){ %>
+                          <option id="<%= item.Name%>second" value="<%= item.Name%>" selected="none" ><%= item.Name %></option>
+                          <% }) %>
+                        </select>
+                      </div>
+                      
+                      <label class = "label-text">Credit</label>
+                      <div class="input-box">
+                      <input type="input" name="Credit" placeholder="Credit" onkeypress="return isNumberKey(event)"/>
+                      <p style="margin: 0; padding: 0; font-size: 10px; font-style: italic; "> Text and negative values are not accepted </p>
+                      </div>
+                      <button type="submit" class="button-modal">Submit</button>
+                </form>
+        
+            </div>
+        </div>
+    </div>
+    <script>
+        function myFunction() {
+          var x = document.getElementById("mymain-nav");
+          var y = document.getElementById("myCross-btn");
+          if (x.className === "main-nav") {
+            x.className += " show";
+            y.className +=" show"
+          } else {
+            x.className = "main-nav";
+          }
+        }
+        </script>
+        <script>
+            var li;
+            document.querySelectorAll('.transfer').forEach(item => {
+            item.addEventListener("click", function() {
+          
+            document.querySelector('.bg-modal').style.display = "flex";
+            document.querySelector('body').style.overflow="hidden";
+            li= this.getAttribute('value')+"second";
+            console.log(li);
+            document.getElementById(li).hidden=true;
+            document.getElementById(this.getAttribute('value')).selected=true;
+            
+
+            /*document.querySelector('.button').style.display = "none";*/
+          })
+          });
+          
+            document.querySelector('.close').addEventListener("click", function() {
+            document.querySelector('body').style.overflow="visible";
+            document.querySelector('.bg-modal').style.display = "none";
+            console.log(li);
+            document.getElementById(li).hidden=false;
+              /*document.querySelector('.button').style.display = "flex";*/
+            });
+
+            /*document.getElementById(this.getAttribute('value')).onchange = function() {
+                document.getElementById(li).hidden=false;
+                li=this.getAttribute('value')+"second";
+                document.getElementById(li).hidden=true;
+
+            };*/
+            function removeName(x){
+                if((x+"second")!=li)
+                {
+                    console.log("yay0");
+                document.getElementById(li).hidden=false;
+                li=x+"second";
+                document.getElementById(li).hidden=true;
+
+                }
+            };
+/*
+            document.querySelectorAll('.from-user').forEach(item => {
+            item.addEventListener("click", function() {
+                console.log("yay");
+
+            if((this.getAttribute('value')+"second")!=li )
+            {
+                
+                document.getElementById(li).hidden=false;
+                li = this.getAttribute(id)+"second";
+                console.log(li);
+                document.getElementById(li).hidden=true;
+
+            }    
+         })
+        });*/
+              
+
+          
+          </script>
+          <script>
+              function isNumberKey(evt){
+    var charCode = (evt.which) ? evt.which : evt.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+}
+          </script>
+          
+</body>
+</html>

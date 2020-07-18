@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/button.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="bg">
+        
+        <nav class="nav-div">
+        
+            <div class="logo-container">
+                <a href="index.html" class="logo">Credit<br/>Management</a>
+            </div>
+        
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <div class="Menu-btn">
+                    <img src="assets/Menu.png" style="height: 20px;">
+                </div>
+            </a>
+               
+            <ul class="main-nav" id="mymain-nav">
+               <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <div class="Cross-btn" id="myCross-btn">
+                   
+                    <img src="assets/Cross.png" style="height: 20px;">
+                </div>
+                </a>
+                <li>
+                    <a href="view" method = "GET" class="nav-links">View All Users</a>
+                    </li>
+                <li>
+                    <a href="transfers" method = "GET" class="nav-links">Transfer History</a>
+                </li>
+                <li>
+                    <a href="aboutus" method = "GET" class="nav-links">About Us</a>
+                </li>
+                <li>
+                    <a href="contactus" method = "GET" class="nav-links">Contact Us</a>
+                </li>
+            </ul>
+         </nav>
+        <section>
+            <svg class="Rectangle_3">
+                <rect id="Rectangle_3" rx="0" ry="0" x="0" y="0" width="1286" height="639">
+                </rect>
+                
+            </svg>
+            <div class="mid-text">
+                <h2>Contact Us</h2>
+                <pre>
+                    Loren Ipsum,
+                    dolor sit amet,
+                    consectetur - 10001
+                 
+                    Email - abcdef@xyz.com 
+                    
+                    Phone: 1234567891
+                  </pre>
+            </div>
+        </section>
+        <footer>
+            <div class="credits-text">
+                <label>Designed by Akashdeep Roy Karmakar</label>
+            </div>
+        </footer>
+    </div>
+    <script>
+        function myFunction() {
+          var x = document.getElementById("mymain-nav");
+          var y = document.getElementById("myCross-btn");
+          if (x.className === "main-nav") {
+            x.className += " show";
+            y.className +=" show"
+          } else {
+            x.className = "main-nav";
+          }
+        }
+        </script>
+</body>
+</html>
